@@ -1,0 +1,16 @@
+{
+  "name": "custom-3d-modeler",
+  "version": "1.0.0",
+  "description": "A web-based 3D modeling application for creating and customizing basic 3D shapes",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "three": "^0.158.0"
+  },
+  "keywords": ["3d", "modeling", "threejs", "webgl"],
+  "author": "Custom 3D Modeler",
+  "license": "MIT"
+}
