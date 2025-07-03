@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom 3D Modeler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Custom 3D Modeler</h1>
+            <div class="header-controls">
+                <button id="resetView" class="btn btn-secondary">Reset View</button>
+                <button id="exportModel" class="btn btn-primary">Export</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Panel - Shape Library & Controls -->
+            <aside class="left-panel">
+                <!-- Shape Library -->
+                <div class="panel-section">
+                    <h3>Shape Library</h3>
+                    <div class="shape-grid">
+                        <button class="shape-btn" data-shape="cube">
+                            <span class="shape-icon">📦</span>
+                            <span>Cube</span>
+                        </button>
+                        <button class="shape-btn" data-shape="sphere">
+                            <span class="shape-icon">🔮</span>
+                            <span>Sphere</span>
+                        </button>
+                        <button class="shape-btn" data-shape="cylinder">
+                            <span class="shape-icon">🥫</span>
+                            <span>Cylinder</span>
+                        </button>
+                        <button class="shape-btn" data-shape="cone">
+                            <span class="shape-icon">🔺</span>
+                            <span>Cone</span>
+                        </button>
+                        <button class="shape-btn" data-shape="torus">
+                            <span class="shape-icon">🍩</span>
+                            <span>Torus</span>
+                        </button>
+                        <button class="shape-btn" data-shape="plane">
+                            <span class="shape-icon">▭</span>
+                            <span>Plane</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Shape Creator -->
+                <div class="panel-section">
+                    <h3>Custom Shape</h3>
+                    <div class="prompt-container">
+                        <textarea 
+                            id="shapePrompt" 
+                            placeholder="Describe your custom shape (e.g., 'a pyramid with 6 sides' or 'a twisted tube')"
+                            rows="3"
+                        ></textarea>
+                        <button id="generateShape" class="btn btn-primary">Generate Shape</button>
+                    </div>
+                </div>
+
+                <!-- Shape Properties -->
+                <div class="panel-section" id="propertiesPanel" style="display: none;">
+                    <h3>Properties</h3>
+                    <div id="shapeProperties">
+                        <!-- Properties will be dynamically loaded here -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center - 3D Viewport -->
+            <main class="viewport">
+                <div id="threejs-container"></div>
+                <div class="viewport-overlay">
+                    <div class="viewport-info">
+                        <span id="selectedShapeInfo">Click a shape to see properties</span>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Panel - Scene Objects -->
+            <aside class="right-panel">
+                <div class="panel-section">
+                    <h3>Scene Objects</h3>
+                    <div id="objectsList" class="objects-list">
+                        <p class="empty-state">No objects in scene</p>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>View Controls</h3>
+                    <div class="control-group">
+                        <label>Camera</label>
+                        <div class="button-group">
+                            <button class="btn btn-small" id="frontView">Front</button>
+                            <button class="btn btn-small" id="sideView">Side</button>
+                            <button class="btn btn-small" id="topView">Top</button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Render Mode</label>
+                        <select id="renderMode">
+                            <option value="solid">Solid</option>
+                            <option value="wireframe">Wireframe</option>
+                            <option value="points">Points</option>
+                        </select>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <span id="statusText">Ready to create</span>
+            <span id="mousePosition">X: 0, Y: 0</span>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="shapes.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
